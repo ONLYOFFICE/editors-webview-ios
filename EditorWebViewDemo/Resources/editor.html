@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <title>ONLYOFFICE Api Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+</head>
+<body style="height: 100%; margin: 0;">
+    <div id="placeholder" style="height: 100%"></div>
+    <script type="text/javascript" src="https://doc.onlyoffice.com/web-apps/apps/api/documents/api.js"></script>
+
+    <script type="text/javascript">
+        
+        var handler = window.webkit.messageHandlers;
+        
+        var onAppReady = function() {
+            handler.onAppReady.postMessage({});
+        };
+        
+        var onDocumentReady = function() {
+            handler.onDocumentReady.postMessage({});
+        };
+        
+        var onDownloadAs = function(event) {
+            handler.onDownloadAs.postMessage({fileType: event.data.fileType, url: event.data.url});
+        };
+        
+        var onError = function(event) {
+            handler.onError.postMessage({code: event.data.errorCode, description: event.data.errorDescription});
+        };
+        
+        var onInfo = function(event) {
+            handler.onInfo.postMessage({mode: event.data.mode});
+        };
+        
+        var onRequestClose = function() {
+            handler.onRequestClose.postMessage({});
+        };
+        
+        var onRequestInsertImage = function(event) {
+            handler.onRequestInsertImage.postMessage({type: event.data.c});
+        };
+        
+        var onRequestUsers = function() {
+            handler.onRequestUsers.postMessage({});
+        };
+        
+        var onWarning = function(event) {
+            handler.onWarning.postMessage({code: event.data.warningCode, description: event.data.warningDescription});
+        };
+        
+
+        window.docEditor = new DocsAPI.DocEditor("placeholder",
+             {
+                 {external_config},
+                 "type": "mobile",
+                 "events": {
+                     "onAppReady": onAppReady,
+                     "onDocumentReady": onDocumentReady,
+                     "onDownloadAs": onDownloadAs,
+                     "onError": onError,
+                     "onInfo": onInfo,
+                     "onRequestClose": onRequestClose,
+                     "onRequestInsertImage": onRequestInsertImage,
+                     "onRequestUsers": onRequestUsers,
+                     "onWarning": onWarning,
+                 }
+             });
+
+    </script>
+</body>
+</html>
