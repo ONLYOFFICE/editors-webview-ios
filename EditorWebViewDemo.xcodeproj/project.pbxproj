@@ -56,6 +56,7 @@
 		FC61AB0227D88E6000F2BE48 /* EntrypointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntrypointViewController.swift; sourceTree = "<group>"; };
 		FC61AB0427D88E6000F2BE48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Entrypoint.storyboard; sourceTree = "<group>"; };
 		FC61AB0827D8BC1200F2BE48 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
+		FC7765882925146D00ABAB5C /* EditorWebViewDemo.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = EditorWebViewDemo.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +127,7 @@
 		FC61AAD027D87F5300F2BE48 /* EditorWebViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				FC7765872925146D00ABAB5C /* Configuration */,
 				FC61AAE727D884A400F2BE48 /* Delegate */,
 				FC61AAEA27D886E800F2BE48 /* PresentationLayer */,
 				FC61AB0727D8BBF900F2BE48 /* Extensions */,
@@ -233,6 +235,14 @@
 				FC2AC2CE27E847330035AE3D /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FC7765872925146D00ABAB5C /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				FC7765882925146D00ABAB5C /* EditorWebViewDemo.xcconfig */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +363,7 @@
 /* Begin XCBuildConfiguration section */
 		FC61AAE027D87F5500F2BE48 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC7765882925146D00ABAB5C /* EditorWebViewDemo.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -414,6 +425,7 @@
 		};
 		FC61AAE127D87F5500F2BE48 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC7765882925146D00ABAB5C /* EditorWebViewDemo.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

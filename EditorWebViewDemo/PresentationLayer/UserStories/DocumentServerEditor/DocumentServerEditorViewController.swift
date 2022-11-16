@@ -24,6 +24,19 @@ class DocumentServerEditorViewController: BaseViewController {
         return $0
     }(UIActivityIndicatorView(style: .medium))
     
+    private lazy var webViewConfiguration: WKWebViewConfiguration = {
+        let preferences = WKPreferences()
+        let dropSharedWorkersScript = WKUserScript(
+            source: "delete window.SharedWorker;",
+            injectionTime: WKUserScriptInjectionTime.atDocumentStart,
+            forMainFrameOnly: false
+        )
+        preferences.javaScriptEnabled = true
+        $0.userContentController.addUserScript(dropSharedWorkersScript)
+        $0.preferences = preferences
+        return $0
+    }(WKWebViewConfiguration())
+    
     public var url: URL?
     private var webView: WKWebView!
     
@@ -51,12 +64,8 @@ class DocumentServerEditorViewController: BaseViewController {
 
     private func configureView() {
         /// Setup WebView and layout
-        let preferences = WKPreferences()
-        let configuration = WKWebViewConfiguration()
-        preferences.javaScriptEnabled = true
-        configuration.preferences = preferences
         
-        webView = WKWebView(frame: .zero, configuration: configuration)
+        webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
         
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false

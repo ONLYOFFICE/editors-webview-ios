@@ -43,6 +43,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>DocumentServerURL</key>
-	<string></string>
+	<string>$(DOCUMENT_SERVER_URL)</string>
 </dict>
 </plist>

@@ -14,7 +14,10 @@ class DocumentServerViewController: BaseViewController {
     // MARK: - Properties
     
     /// The address of the web interface of the document server for the demo.
-    private var documentServerUrlString = Bundle.main.object(forInfoDictionaryKey: "DocumentServerURL") as? String ?? ""
+    private var documentServerUrlString: String {
+        guard let url = Bundle.main.object(forInfoDictionaryKey: "DocumentServerURL") as? String, !url.isEmpty else { return "" }
+        return "https://\(url)"
+    }
     
     /// Part of the address of the link on which the document is opened.
     /// It is a marker for opening the document editor.
@@ -68,7 +71,18 @@ class DocumentServerViewController: BaseViewController {
     
     private var webView: WKWebView!
     private var estimatedProgressObserver: NSKeyValueObservation?
-
+    private lazy var webViewConfiguration: WKWebViewConfiguration = {
+        let preferences = WKPreferences()
+        let dropSharedWorkersScript = WKUserScript(
+            source: "delete window.SharedWorker;",
+            injectionTime: WKUserScriptInjectionTime.atDocumentStart,
+            forMainFrameOnly: false
+        )
+        preferences.javaScriptEnabled = true
+        $0.userContentController.addUserScript(dropSharedWorkersScript)
+        $0.preferences = preferences
+        return $0
+    }(WKWebViewConfiguration())
     
     // MARK: - Lifecycle Methods
     
@@ -92,12 +106,7 @@ class DocumentServerViewController: BaseViewController {
         edgesForExtendedLayout = []
         
         /// Setup WebView
-        let preferences = WKPreferences()
-        let configuration = WKWebViewConfiguration()
-        preferences.javaScriptEnabled = true
-        configuration.preferences = preferences
-        
-        webView = WKWebView(frame: .zero, configuration: configuration)
+        webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
         
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -146,7 +155,7 @@ class DocumentServerViewController: BaseViewController {
     
     private func load() {
         if documentServerUrlString.isEmpty {
-            showAlert(title: "Error", message: "You must specify the document server address, the \"DocumentServerURL\" value in the Info.plist file.")
+            showAlert(title: "Error", message: "You must specify the document server address\nfor \"DOCUMENT_SERVER_URL\" value in configuration file.")
             return
         }
         

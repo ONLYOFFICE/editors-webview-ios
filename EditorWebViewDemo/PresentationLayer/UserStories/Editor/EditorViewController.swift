@@ -23,6 +23,18 @@ class EditorViewController: BaseViewController {
     private var webView: WKWebView!
     private var editorEventsHandler: EditorEventsHandler!
     private var previewController = PreviewController()
+    private lazy var webViewConfiguration: WKWebViewConfiguration = {
+        let preferences = WKPreferences()
+        let dropSharedWorkersScript = WKUserScript(
+            source: "delete window.SharedWorker;",
+            injectionTime: WKUserScriptInjectionTime.atDocumentStart,
+            forMainFrameOnly: false
+        )
+        preferences.javaScriptEnabled = true
+        $0.userContentController.addUserScript(dropSharedWorkersScript)
+        $0.preferences = preferences
+        return $0
+    }(WKWebViewConfiguration())
     
     var config: String?
     
@@ -41,14 +53,7 @@ class EditorViewController: BaseViewController {
     private func configureView() {
         /// Setup WebView and layout
         
-        let preferences = WKPreferences()
-        let configuration = WKWebViewConfiguration()
-        preferences.javaScriptEnabled = true
-        configuration.preferences = preferences
-        editorEventsHandler = EditorEventsHandler(configuration: configuration)
-        editorEventsHandler.delegate = self
-        
-        webView = WKWebView(frame: .zero, configuration: configuration)
+        webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
         
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
