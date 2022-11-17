@@ -29,6 +29,10 @@
 		FC61AB0527D88E6000F2BE48 /* EntrypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC61AB0227D88E6000F2BE48 /* EntrypointViewController.swift */; };
 		FC61AB0627D88E6000F2BE48 /* Entrypoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC61AB0327D88E6000F2BE48 /* Entrypoint.storyboard */; };
 		FC61AB0927D8BC1200F2BE48 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC61AB0827D8BC1200F2BE48 /* URLExtensions.swift */; };
+		FC77659129255CD100ABAB5C /* JWT in Frameworks */ = {isa = PBXBuildFile; productRef = FC77659029255CD100ABAB5C /* JWT */; };
+		FC776593292563B200ABAB5C /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC776592292563B200ABAB5C /* StringExtensions.swift */; };
+		FC7765952925645B00ABAB5C /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7765942925645B00ABAB5C /* DictionaryExtensions.swift */; };
+		FC77659929263C5D00ABAB5C /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77659829263C5D00ABAB5C /* Env.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +61,9 @@
 		FC61AB0427D88E6000F2BE48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Entrypoint.storyboard; sourceTree = "<group>"; };
 		FC61AB0827D8BC1200F2BE48 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		FC7765882925146D00ABAB5C /* EditorWebViewDemo.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = EditorWebViewDemo.xcconfig; sourceTree = "<group>"; };
+		FC776592292563B200ABAB5C /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		FC7765942925645B00ABAB5C /* DictionaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
+		FC77659829263C5D00ABAB5C /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC77659129255CD100ABAB5C /* JWT in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +239,8 @@
 		FC61AB0727D8BBF900F2BE48 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FC7765942925645B00ABAB5C /* DictionaryExtensions.swift */,
+				FC776592292563B200ABAB5C /* StringExtensions.swift */,
 				FC61AB0827D8BC1200F2BE48 /* URLExtensions.swift */,
 				FC2AC2CE27E847330035AE3D /* UIViewControllerExtensions.swift */,
 			);
@@ -240,6 +250,7 @@
 		FC7765872925146D00ABAB5C /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				FC77659829263C5D00ABAB5C /* Env.swift */,
 				FC7765882925146D00ABAB5C /* EditorWebViewDemo.xcconfig */,
 			);
 			path = Configuration;
@@ -261,6 +272,9 @@
 			dependencies = (
 			);
 			name = EditorWebViewDemo;
+			packageProductDependencies = (
+				FC77659029255CD100ABAB5C /* JWT */,
+			);
 			productName = EditorWebViewDemo;
 			productReference = FC61AACE27D87F5300F2BE48 /* EditorWebViewDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -290,6 +304,9 @@
 				Base,
 			);
 			mainGroup = FC61AAC527D87F5300F2BE48;
+			packageReferences = (
+				FC77658F29255CD100ABAB5C /* XCRemoteSwiftPackageReference "JSONWebToken.swift" */,
+			);
 			productRefGroup = FC61AACF27D87F5300F2BE48 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -324,13 +341,16 @@
 				FC61AB0927D8BC1200F2BE48 /* URLExtensions.swift in Sources */,
 				FC61AAE927D884A400F2BE48 /* AppDelegate.swift in Sources */,
 				FC61AAF027D888B300F2BE48 /* Navigator.swift in Sources */,
+				FC77659929263C5D00ABAB5C /* Env.swift in Sources */,
 				FC2AC2B627E46B9C0035AE3D /* EditorViewController.swift in Sources */,
 				FC2AC2C727E4BCA80035AE3D /* SamplesEditorTypesViewController.swift in Sources */,
 				FC2AC2C527E4B5990035AE3D /* SamplesEditorModeViewController.swift in Sources */,
 				FC2AC2B827E480580035AE3D /* EditorEventsHandler.swift in Sources */,
 				FC61AB0527D88E6000F2BE48 /* EntrypointViewController.swift in Sources */,
+				FC7765952925645B00ABAB5C /* DictionaryExtensions.swift in Sources */,
 				FC61AAF627D88AB400F2BE48 /* DocumentServerViewController.swift in Sources */,
 				FC2AC2BE27E495FE0035AE3D /* EditorEventsDelegate.swift in Sources */,
+				FC776593292563B200ABAB5C /* StringExtensions.swift in Sources */,
 				FC61AAF727D88AB400F2BE48 /* DocumentServerEditorViewController.swift in Sources */,
 				FC2AC2C927E4C2690035AE3D /* BaseTableViewController.swift in Sources */,
 				FC61AAEE27D886E800F2BE48 /* BaseViewController.swift in Sources */,
@@ -553,6 +573,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FC77658F29255CD100ABAB5C /* XCRemoteSwiftPackageReference "JSONWebToken.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kylef/JSONWebToken.swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FC77659029255CD100ABAB5C /* JWT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC77658F29255CD100ABAB5C /* XCRemoteSwiftPackageReference "JSONWebToken.swift" */;
+			productName = JWT;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FC61AAC627D87F5300F2BE48 /* Project object */;
 }

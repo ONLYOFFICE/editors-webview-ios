@@ -13,12 +13,6 @@ class DocumentServerViewController: BaseViewController {
 
     // MARK: - Properties
     
-    /// The address of the web interface of the document server for the demo.
-    private var documentServerUrlString: String {
-        guard let url = Bundle.main.object(forInfoDictionaryKey: "DocumentServerURL") as? String, !url.isEmpty else { return "" }
-        return "https://\(url)"
-    }
-    
     /// Part of the address of the link on which the document is opened.
     /// It is a marker for opening the document editor.
     private var openDocumentMarker = "/editor?"
@@ -154,12 +148,12 @@ class DocumentServerViewController: BaseViewController {
     }
     
     private func load() {
-        if documentServerUrlString.isEmpty {
-            showAlert(title: "Error", message: "You must specify the document server address\nfor \"DOCUMENT_SERVER_URL\" value in configuration file.")
+        if Env.documentServerExampleUrl.replacingOccurrences(of: "https://", with: "").isEmpty {
+            showAlert(title: "Error", message: "You must specify the document server example page address for \"DOCUMENT_SERVER_EXAMPLE_URL\" value in configuration file.")
             return
         }
         
-        guard let url = URL(string: documentServerUrlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") else {
+        guard let url = URL(string: Env.documentServerExampleUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") else {
             return
         }
         

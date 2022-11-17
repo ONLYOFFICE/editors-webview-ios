@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import JWT
 
 class EditorViewController: BaseViewController {
 
@@ -53,6 +54,9 @@ class EditorViewController: BaseViewController {
     private func configureView() {
         /// Setup WebView and layout
         
+        editorEventsHandler = EditorEventsHandler(configuration: webViewConfiguration)
+        editorEventsHandler.delegate = self
+        
         webView = WKWebView(frame: .zero, configuration: webViewConfiguration)
         
         view.addSubview(webView)
@@ -96,7 +100,22 @@ class EditorViewController: BaseViewController {
             print(error)
         }
         
-        html = html.replacingOccurrences(of: "{external_config}", with: config ?? "")
+        var config = config?
+            .replacingOccurrences(of: "{KEY}", with: UUID().uuidString)
+            .replacingOccurrences(of: "{DOC_URL_PATH}", with: Env.documentServerFilesUrl)
+            .replacingOccurrences(of: "{CALLBACK_URL}", with: Env.editorCallbackUrl)
+            .toDictionary() ?? [:]
+        
+        config["token"] = JWT.encode(claims: config, algorithm: .hs256(Env.documentServerJwtSecret.data(using: .utf8)!))
+        
+        let jsonString = (config.jsonString(prettify: true) ?? "")
+            .dropLast()
+            .dropFirst()
+        
+        html = html
+            .replacingOccurrences(of: "{document_server_url}", with: Env.documentServerUrl)
+            .replacingOccurrences(of: "{external_config}", with: jsonString)
+        
         webView.loadHTMLString(html, baseURL: nil)
     }
     
@@ -148,7 +167,7 @@ extension EditorViewController: WKNavigationDelegate {
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void)
     {
         /// Handle download link
-        if let url = navigationAction.request.url, url.absoluteString.contains("doc.onlyoffice.com/cache/files/") {
+        if let url = navigationAction.request.url, url.absoluteString.contains("/cache/files/") {
             decisionHandler(.cancel)
             
             displayLoader(show: true)

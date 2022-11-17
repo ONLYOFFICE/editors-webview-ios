@@ -13,10 +13,6 @@ class DocumentServerEditorViewController: BaseViewController {
 
     // MARK: - Properties
     
-    /// The address of the link to exit the editor.
-    /// From editor's config
-    private let goBackUrl = Bundle.main.object(forInfoDictionaryKey: "DocumentServerURL") as? String ?? ""
-    
     private let activityIndicator: UIActivityIndicatorView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.hidesWhenStopped = true
@@ -120,7 +116,7 @@ extension DocumentServerEditorViewController: WKNavigationDelegate {
         
         /// Push back button from editor.
         /// Navigate to previous screen
-        if urlString == goBackUrl {
+        if urlString == Env.documentServerExampleUrl {
             decisionHandler(.cancel)
             navigationController?.popViewController(animated: true)
         } else {

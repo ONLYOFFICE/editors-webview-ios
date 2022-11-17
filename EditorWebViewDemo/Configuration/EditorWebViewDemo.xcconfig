@@ -9,4 +9,8 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-DOCUMENT_SERVER_URL =
+DOCUMENT_SERVER_EXAMPLE_URL =// Change to yours Document Server example page
+DOCUMENT_SERVER_URL = onlinedocs.onlyoffice.com
+DOCUMENT_SERVER_JWT_SECRET = sn2puSUF7muF5Jas
+DOCUMENT_SERVER_FILES_URL = d2nlctn12v279m.cloudfront.net/assets/docs/samples
+EDITOR_CALLBACK_URL = api.onlyoffice.com/editors/callback

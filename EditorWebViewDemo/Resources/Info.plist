@@ -42,7 +42,15 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>DocumentServerURL</key>
+	<key>DOCUMENT_SERVER_EXAMPLE_URL</key>
+	<string>$(DOCUMENT_SERVER_EXAMPLE_URL)</string>
+	<key>DOCUMENT_SERVER_FILES_URL</key>
+	<string>$(DOCUMENT_SERVER_FILES_URL)</string>
+	<key>EDITOR_CALLBACK_URL</key>
+	<string>$(EDITOR_CALLBACK_URL)</string>
+	<key>DOCUMENT_SERVER_URL</key>
 	<string>$(DOCUMENT_SERVER_URL)</string>
+	<key>DOCUMENT_SERVER_JWT_SECRET</key>
+	<string>$(DOCUMENT_SERVER_JWT_SECRET)</string>
 </dict>
 </plist>
