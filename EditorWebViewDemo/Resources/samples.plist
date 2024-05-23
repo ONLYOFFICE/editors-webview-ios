@@ -266,9 +266,9 @@
 				<array>
 					<dict>
 						<key>title</key>
-						<string>OFORM</string>
+						<string>PDF</string>
 						<key>config</key>
-						<string>{&quot;document&quot;:{&quot;fileType&quot;:&quot;oform&quot;,&quot;key&quot;:&quot;apiwh{KEY}&quot;,&quot;title&quot;:&quot;Example Form Title.oform&quot;,&quot;url&quot;:&quot;{DOC_URL_PATH}/demo.oform&quot;,&quot;permissions&quot;:{&quot;edit&quot;:false,&quot;fillForms&quot;:true}},&quot;documentType&quot;:&quot;word&quot;,&quot;editorConfig&quot;:{&quot;callbackUrl&quot;:&quot;{CALLBACK_URL}&quot;,&quot;mode&quot;:&quot;edit&quot;},&quot;height&quot;:&quot;100%&quot;,&quot;width&quot;:&quot;100%&quot;}</string>
+						<string>{&quot;document&quot;:{&quot;fileType&quot;:&quot;pdf&quot;,&quot;key&quot;:&quot;apiwh{KEY}&quot;,&quot;title&quot;:&quot;Example Form Title.pdf&quot;,&quot;url&quot;:&quot;{DOC_URL_PATH}/oform.pdf&quot;},&quot;permissions&quot;:{&quot;edit&quot;:false,&quot;fillForms&quot;:true},&quot;documentType&quot;:&quot;pdf&quot;,&quot;editorConfig&quot;:{&quot;callbackUrl&quot;:&quot;{CALLBACK_URL}&quot;,&quot;mode&quot;:&quot;edit&quot;},&quot;height&quot;:&quot;100%&quot;,&quot;width&quot;:&quot;100%&quot;}</string>
 					</dict>
 				</array>
 			</dict>
